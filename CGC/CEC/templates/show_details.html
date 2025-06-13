@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submitted Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .details-card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #2575fc;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2575fc;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="details-card">
+    <h2>Entered Details</h2>
+    {% if name and age and roll_number and email %}
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Age:</strong> {{ age }}</p>
+      <p><strong>Roll Number:</strong> {{ roll_number }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+    {% else %}
+      <p>No details submitted.</p>
+    {% endif %}
+    <a href="{% url 'login1' %}">Go Back to Login</a>
+  </div>
+</body>
+</html>

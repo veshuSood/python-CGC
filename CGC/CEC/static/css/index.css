@@ -1,0 +1,26 @@
+body{
+    background-color:rgb(104, 194, 221); 
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(209, 141, 38); 
+    font-size: 16px;
+   
+}
+.t1  {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+}
+.t1 th, .t1 td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+.t1 th {
+    background-color: #4CAF50;
+    color: white;
+}
+.t1 tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+        

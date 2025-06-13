@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Student Table</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 20px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 30px 0 20px;
+            font-size: 32px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .table-wrapper {
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .t1 {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .t1 th, .t1 td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .t1 th {
+            background-color: #2575fc;
+            color: white;
+        }
+
+        .t1 tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .t1 tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            color: #333;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .t1 th, .t1 td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            header nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'login1' %}">Login</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'show_details' %}">Show_details</a>
+        </nav>
+    </header>
+
+    <!-- Title -->
+    <h1>Welcome to the CGC/CEC Student Portal</h1>
+
+    <!-- Image -->
+    <img src="{% static 'images/image.jpg' %}" alt="Campus Image" width="400">
+
+    <!-- Table Section -->
+    <div class="table-wrapper">
+        <table class="t1">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student Age</th>
+                    <th>Student Roll Number</th>
+                    <th>Student Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if student %}
+                    {% for i in student %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.age }}</td>
+                            <td>{{ i.roll_number }}</td>
+                            <td>{{ i.email }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">No student data available.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 CGC/CEC | All rights reserved.
+    </footer>
+
+</body>
+</html>

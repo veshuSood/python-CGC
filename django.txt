@@ -1,0 +1,67 @@
+port no. Django 8000
+to create project
+
+cmd-- django-admin startproject CGC
+or python -m django startproject name
+
+to create app   
+python manage.py startapp name
+
+to run 
+python manage.py runserver
+
+create virtual env --> python -m venv abc
+		activate-> abc\Scripts\activate
+project:1 create project
+	2 create app
+ 	3 install app in installed app in setting.py(project)
+	4 write in view(app)
+	5 create templates folder in app and create html files
+	6 attach view file to url(project) by importing files and write in path
+	7 create templates folder in app folder template folder(which contains all html files)
+	8 create static folder in app folder static folder(which contains all other files: css,js,png,jpeg)
+	9 create superuser to get username(cmd is python manage.py createsuperuser )
+	10 create model for database schema rather than sql in app folder models.py
+	11 to convert model to sql use cmd python manage.py makemigrations
+	12 to run query python manage.py migrate
+	13 to chk sql file use sqlLiteviewer.app 
+	14 handling data using admin cmd--> python manage.py createsuperuser (enter name pass)
+	15 runserver got admin enter id pass 
+	16 in project folder goto admin (write admin.site.register(model names)) or create class to get organised 	   data to get data in detail use @admin.register(model name) then write class 
+	17 to display this data on page first in views in render add another var and parameter
+		def Home(request):
+  		    stu=Student.objects.all()
+  		    return render(request,'home.html',{"student":stu})
+	   then in html file of that page use Django template language(by using if for loop print the data of 		   database)
+	18 add name to views then to link pages use <a href="{% url 'name in view' %}"> fxn name</a> (for dynamic 	   url) in html page of that section
+	19 to get data from user create form(in html file) also add csrf token then in form tage write 		    	   action="/login" method="post" 	   post is send then goto view file in login fxn write  
+	if request.method =='POST':
+         name =request.POST.get('name')
+         age= request.POST.get('age')
+         roll_number = request.POST.get('roll_number')
+         email = request.POST.get('email')
+         stu=Student(name=name, age=age, roll_number=roll_number, email=email)
+         stu.save()
+      	 return render(request,'login.html') 
+  	else:
+    	 return render(request,'login.html')  
+	20 to deploy on server first goto pythonanywhere create account  in settings.py make debug=false(because 	   we are using this in production that run this to give to people) and in allowed hosts 	   	 	   'username.pyhtonanywhere.com'(particular application is opened) then zip your project then on site goto 	   files and open bash console and write 'unzip filename.zip'in settings.py write this in static 
+	 import os
+	 STATIC_URL = '/static/'
+	 STATICFILES_DIRS=[BASE_DIR / 'appname/static']
+	 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+	 then goto console create virtual env(on home ie '~ $') to activate source ~/name of venv/bin/activate
+	 then goto project(cd projectname) then for static file cmd-> 'python manage.py collectstatic' then 	 	 makemigration , migrate ,createsuperuser then create web app(in web) set your python version(3.13)
+	 in manual config, open wsgi file uncomment Django part and update projectname(CGC) then in static add url 	 as '/static/' and in path add '/home/JatinSood/CGC/CEC/static' then reload and to run go 	  	'https://jatinsood.pythonanywhere.com/home'
+	21 to directly deploy that is without /home  in urls just remove the path from  path('home/', 	  		 views.Home,name='home') to  path('', views.Home,name='home')
+
+MVT --> Model(DB) View template
+templates-> put all html files
+View--> two type class based and fxn based
+	write view(app) then add to urls(projects)
+to return html file render fxn is used
+Model--> database schema 
+	create model for database schema rather than sql in app folder models.py
+ 	to convert model to sql use cmd python manage.py makemigrations
+	to run query python manage.py migrate 
+
